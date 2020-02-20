@@ -21,7 +21,11 @@ module.exports = {
             {
                 test: /\.pug$/,
                 use: ['pug-loader']
-            }
+            },
+            {
+                test: /\.styl$/,
+                use: ['css-loader','stylus-loader']
+            },
         ]
     },
     plugins: [
