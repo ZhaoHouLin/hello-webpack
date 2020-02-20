@@ -1,4 +1,5 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 // console.log("__dirname:",__dirname)
 // console.log("resolve:",path.resolve(__dirname,'./src'))
@@ -13,5 +14,21 @@ module.exports = {
     output: {
         path: path.resolve(__dirname,'dist'), 
         filename: './js/[name].js',
-    }
+    },
+
+    module: {
+        rules: [
+            {
+                test: /\.pug$/,
+                use: ['pug-loader']
+            }
+        ]
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            template: 'pug/index.pug',    // 注意index.pug放的位置
+            chunks: ['index']
+        })
+    ]
 }
