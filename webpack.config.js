@@ -38,7 +38,7 @@ module.exports = {
             {
                 test: /\.styl$/,
                 // use: ['css-loader','stylus-loader']
-                use: extractCSS.extract(['css-loader','stylus-loader'])
+                use: extractCSS.extract(['css-loader','postcss-loader','stylus-loader'])
             },
         ]
     },
