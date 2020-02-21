@@ -57,6 +57,10 @@ module.exports = {
                 // use: ['css-loader','stylus-loader']
                 use: extractCSS.extract(['css-loader','postcss-loader','stylus-loader'])
             },
+            {
+                test: /\.js$/,
+                use: 'babel-loader'
+            },
         ]
     },
     plugins: [
