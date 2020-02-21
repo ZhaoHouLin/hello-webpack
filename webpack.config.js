@@ -25,6 +25,17 @@ module.exports = {
                 use: ['pug-loader']
             },
             {
+                test: /\.pug$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[path][name].[ext]'
+                        }
+                    }
+                ]
+            },
+            {
                 test: /\.styl$/,
                 // use: ['css-loader','stylus-loader']
                 use: extractCSS.extract(['css-loader','stylus-loader'])
