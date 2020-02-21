@@ -1,5 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const extractCSS = new ExtractTextPlugin('css/[name].css')
 
 // console.log("__dirname:",__dirname)
 // console.log("resolve:",path.resolve(__dirname,'./src'))
@@ -24,7 +26,8 @@ module.exports = {
             },
             {
                 test: /\.styl$/,
-                use: ['css-loader','stylus-loader']
+                // use: ['css-loader','stylus-loader']
+                use: extractCSS.extract(['css-loader','stylus-loader'])
             },
         ]
     },
@@ -33,6 +36,7 @@ module.exports = {
             filename: 'index.html',
             template: 'pug/index.pug',    // 注意index.pug放的位置
             chunks: ['index']
-        })
+        }),
+        extractCSS
     ]
 }
